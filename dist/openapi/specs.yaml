@@ -6,6 +6,13 @@ paths:
   /api/GetEmpStatus:
     post:
       summary: Compute employee status by NationalNumber
+      parameters:
+        - in: header
+          name: x-api-token
+          required: true
+          description: Must match the `API_TOKEN` value in the server environment.
+          schema:
+            type: string
       security:
         - ApiTokenAuth: []
       requestBody:
@@ -20,7 +27,7 @@ paths:
                   type: string
                   example: NAT1001
       responses:
-        '200':
+        "200":
           description: Computed status
           content:
             application/json:
@@ -42,16 +49,16 @@ paths:
                   Status:
                     type: string
                     enum: ["GREEN", "ORANGE", "RED"]
-                  IsActive: 
+                  IsActive:
                     type: boolean
                     example: true
                   LastUpdated:
                     type: string
                     example: "2025-10-25T10:00:00Z"
-        '401': { description: Unauthorized }
-        '404': { description: Invalid National Number }
-        '406': { description: User is not Active }
-        '422': { description: INSUFFICIENT_DATA }
+        "401": { description: Unauthorized }
+        "404": { description: Invalid National Number }
+        "406": { description: User is not Active }
+        "422": { description: INSUFFICIENT_DATA }
 components:
   securitySchemes:
     ApiTokenAuth:
