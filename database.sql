@@ -1,4 +1,3 @@
--- PostgreSQL schema
 CREATE TABLE IF NOT EXISTS users (
   id SERIAL PRIMARY KEY,
   username TEXT NOT NULL,
@@ -16,7 +15,6 @@ CREATE TABLE IF NOT EXISTS salaries (
   userid INT NOT NULL REFERENCES users(id) ON DELETE CASCADE
 );
 
--- Optional bonus tables
 CREATE TABLE IF NOT EXISTS logs (
   id BIGSERIAL PRIMARY KEY,
   level TEXT NOT NULL,
@@ -25,7 +23,6 @@ CREATE TABLE IF NOT EXISTS logs (
   created_at TIMESTAMPTZ NOT NULL DEFAULT NOW()
 );
 
--- Sample data (users)
 INSERT INTO users (id, username, nationalnumber, email, phone, isactive) VALUES
 (1,'jdoe','NAT1001','jdoe@example.com','0791111111', true),
 (2,'asalem','NAT1002','asalem@example.com','0792222222', true),
@@ -41,7 +38,6 @@ INSERT INTO users (id, username, nationalnumber, email, phone, isactive) VALUES
 (12,'aali','NAT1012','aali@example.com','0781088101', true)
 ON CONFLICT (id) DO NOTHING;
 
--- Sample data (salaries) - IDs normalized and duplicates resolved
 INSERT INTO salaries (id, year, month, salary, userid) VALUES
 (1,2025,1,1200,1),
 (2,2025,2,1300,1),

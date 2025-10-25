@@ -26,6 +26,28 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  EmployeeName:
+                    type: string
+                    example: John Doe
+                  NationalNumber:
+                    type: string
+                    example: NAT1001
+                  HighestSalary:
+                    type: number
+                    example: 2500
+                  AverageSalary:
+                    type: number
+                    example: 1870.45
+                  Status:
+                    type: string
+                    enum: ["GREEN", "ORANGE", "RED"]
+                  IsActive: 
+                    type: boolean
+                    example: true
+                  LastUpdated:
+                    type: string
+                    example: "2025-10-25T10:00:00Z"
         '401': { description: Unauthorized }
         '404': { description: Invalid National Number }
         '406': { description: User is not Active }

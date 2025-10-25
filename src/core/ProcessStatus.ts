@@ -1,9 +1,4 @@
-import type {
-  EmpInfo,
-  SalaryRow,
-  GetEmpStatusOutput,
-  StatusColor,
-} from "./types";
+import { EmpInfo, SalaryRow, GetEmpStatusOutput, StatusColor } from "./types";
 
 function adjustSalary(row: SalaryRow): number {
   let s = row.salary;
@@ -13,9 +8,9 @@ function adjustSalary(row: SalaryRow): number {
 }
 
 function computeStatus(average: number): StatusColor {
-  if (average > 2000) return "GREEN";
-  if (average === 2000) return "ORANGE";
-  return "RED";
+  if (average > 2000) return StatusColor.GREEN;
+  if (average === 2000) return StatusColor.ORANGE;
+  return StatusColor.RED;
 }
 
 export class ProcessStatus {
@@ -35,22 +30,13 @@ export class ProcessStatus {
     const highest = Math.max(...adjusted);
 
     return {
-      employee: {
-        id: emp.id,
-        username: emp.username,
-        nationalNumber: emp.nationalNumber,
-        email: emp.email,
-        phone: emp.phone,
-      },
-      stats: {
-        count,
-        sum: Number(sum.toFixed(2)),
-        average,
-        highest: Number(highest.toFixed(2)),
-        appliedTax,
-      },
-      status: computeStatus(average),
-      lastUpdatedUtc: new Date().toISOString(),
+      EmployeeName: emp.username,
+      NationalNumber: emp.nationalNumber,
+      HighestSalary: Number(highest.toFixed(2)),
+      AverageSalary: average,
+      Status: computeStatus(average),
+      IsActive: emp.isActive,
+      LastUpdated: new Date().toISOString(),
     };
   }
 }

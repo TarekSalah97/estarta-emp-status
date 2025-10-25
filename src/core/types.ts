@@ -1,4 +1,8 @@
-export type StatusColor = "GREEN" | "ORANGE" | "RED";
+export enum StatusColor {
+  GREEN = "GREEN",
+  ORANGE = "ORANGE",
+  RED = "RED",
+}
 
 export interface EmpInfo {
   id: number;
@@ -21,14 +25,11 @@ export interface GetEmpStatusInput {
 }
 
 export interface GetEmpStatusOutput {
-  employee: Omit<EmpInfo, "isActive">;
-  stats: {
-    count: number;
-    sum: number;
-    average: number;
-    highest: number;
-    appliedTax: boolean;
-  };
-  status: StatusColor;
-  lastUpdatedUtc: string;
+  EmployeeName: string;
+  NationalNumber: string;
+  HighestSalary: number;
+  AverageSalary: number;
+  Status: StatusColor;
+  IsActive: boolean;
+  LastUpdated: string;
 }

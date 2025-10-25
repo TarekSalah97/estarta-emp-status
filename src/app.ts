@@ -10,13 +10,8 @@ export function createApp() {
   app.use(express.json());
   app.use(logging);
 
-  // Swagger
   app.use("/docs", docsRouter);
-
-  // Protected routes
   app.use("/api/GetEmpStatus", apiTokenAuth, getEmpStatusRouter);
-
-  // Errors
   app.use(errorHandler);
   return app;
 }
