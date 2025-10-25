@@ -32,6 +32,25 @@
 
 ---
 
+## 📦 Database SQL
+
+This repository includes a **`database.sql`** file containing:
+
+- All table creations (`users`, `salaries`, and optional `logs`)
+- Complete sample seed data
+
+### Load it
+
+```bash
+# create the database (if not created yet)
+psql -U postgres -h 127.0.0.1 -d postgres -c "CREATE DATABASE getempstatus;"
+
+# apply schema + seed data
+psql -U postgres -h 127.0.0.1 -d getempstatus -f database.sql
+```
+
+---
+
 ## ⚙️ Setup Instructions
 
 ### 1. Prerequisites
